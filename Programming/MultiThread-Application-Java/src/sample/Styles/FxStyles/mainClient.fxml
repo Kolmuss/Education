@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MainClient">
+   <children>
+      <ImageView fitHeight="685.0" fitWidth="974.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Media/istockphoto-499204206-1024x1024.jpg" />
+         </image>
+      </ImageView>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="939.0">
+         <children>
+            <HBox prefHeight="143.0" prefWidth="938.0">
+               <children>
+                  <AnchorPane style="-fx-border-color: black; -fx-background-color: black;">
+                     <children>
+                        <ImageView fitHeight="137.0" fitWidth="145.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Media/fashion-logos.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="138.0" prefWidth="660.0">
+                     <children>
+                        <TextField fx:id="searchBox" layoutX="150.0" layoutY="56.0" prefHeight="26.0" prefWidth="177.0" style="-fx-background-color: white; -fx-border-color: black;" />
+                        <Button fx:id="searchButton" layoutX="327.0" layoutY="56.0" mnemonicParsing="false" style="-fx-background-color: black; -fx-border-color: black;" text="search" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="143.0" prefWidth="210.0" style="-fx-border-color: WHITE; -fx-background-color: black;">
+                     <children>
+                        <Text fx:id="nameField" fill="WHITE" layoutX="7.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name Surname" textAlignment="CENTER" wrappingWidth="176.53680801391602">
+                           <font>
+                              <Font name="Impact" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BALANCE:" wrappingWidth="60.53681564331055">
+                           <font>
+                              <Font name="Impact" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CART: " wrappingWidth="52.799999999999955">
+                           <font>
+                              <Font name="Impact" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="balanceField" fill="WHITE" layoutX="95.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="82.93684005737305">
+                           <font>
+                              <Font name="Impact" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="cartSize" fill="WHITE" layoutX="95.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="82.93684005737305">
+                           <font>
+                              <Font name="Impact" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox prefHeight="37.0" prefWidth="938.0" style="-fx-background-color: black;">
+               <children>
+                  <Pane prefHeight="47.0" prefWidth="290.0" style="-fx-background-color: black;" />
+                  <Button fx:id="shoesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-width: 10PX;" text="SHOES" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="clothingButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-width: 10PX;" text="CLOTHING" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="accessoriesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="120.0" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-width: 10PX;" text="ACCESSORIES" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="13.0" />
+                     </font>
+                  </Button>
+                  <Pane prefHeight="47.0" prefWidth="290.0" style="-fx-background-color: black;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="438.0" prefWidth="938.0">
+               <children>
+                  <VBox prefHeight="438.0" prefWidth="197.0" style="-fx-border-color: white; -fx-background-color: black; -fx-border-width: 5px;">
+                     <children>
+                        <AnchorPane prefHeight="74.0" prefWidth="180.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="14.0" prefHeight="18.0" prefWidth="158.0" text="SIZE" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="13.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="sizeBox" layoutX="15.0" layoutY="37.0" prefWidth="150.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="74.0" prefWidth="180.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="14.0" prefHeight="18.0" prefWidth="157.0" text="BRAND" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="13.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="brandBox" layoutX="15.0" layoutY="37.0" prefWidth="150.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="74.0" prefWidth="180.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="14.0" prefHeight="18.0" prefWidth="157.0" text="SEASON" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="13.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="seasonBox" layoutX="15.0" layoutY="37.0" prefWidth="150.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="110.0" prefWidth="188.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="14.0" prefHeight="18.0" prefWidth="157.0" text="PRICE" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="13.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="priceBox" layoutX="15.0" layoutY="37.0" prefWidth="150.0" />
+                           </children>
+                        </AnchorPane>
+                        <Button fx:id="filterButton" mnemonicParsing="false" prefHeight="0.0" prefWidth="188.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 10px;" text="SEARCH">
+                           <font>
+                              <Font name="Impact" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <AnchorPane>
+                     <children>
+                        <VBox fx:id="listPanel">
+                           <children>
+                              <ListView fx:id="goodList" prefHeight="386.0" prefWidth="742.0" style="-fx-background-color: transparent; -fx-border-color: BLACK; -fx-border-width: 5PX;" />
+                              <Button fx:id="selectButton" mnemonicParsing="false" prefHeight="33.0" prefWidth="742.0" style="-fx-background-color: WHITE; -fx-border-color: black; -fx-border-width: 5PX;" text="SELECT">
+                                 <font>
+                                    <Font name="Impact" size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <AnchorPane fx:id="infoPanel" prefHeight="438.0" prefWidth="742.0" style="-fx-background-color: white;" visible="false">
+                           <children>
+                              <ImageView fx:id="imageField" fitHeight="402.0" fitWidth="252.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Media/gwen-lu-black-swan-fashion.jpg" />
+                                 </image>
+                              </ImageView>
+                              <TextArea fx:id="infoArea" editable="false" layoutX="322.0" layoutY="30.0" prefHeight="288.0" prefWidth="393.0" />
+                              <Button fx:id="addButton" layoutX="351.0" layoutY="357.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: black; -fx-border-color: black;" text="ADD TO CART" textFill="WHITE">
+                                 <font>
+                                    <Font name="Impact" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="BuyButton" layoutX="549.0" layoutY="357.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: WHITE; -fx-border-color: black;" text="BUY">
+                                 <font>
+                                    <Font name="Impact" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <Pane prefHeight="50.0" prefWidth="938.0" style="-fx-background-color: black;" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
