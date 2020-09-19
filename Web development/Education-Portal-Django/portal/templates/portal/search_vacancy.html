@@ -1,0 +1,56 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block content %}
+<div class="breadcome-area" style="margin-top:50px;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcome-list single-page-breadcome">
+          <div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+							</div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="breadcome-heading">
+                <form role="search" class="sr-input-func" method="post" style="width:100%">
+                  {% csrf_token %}
+									<div style="display: flex;width:  100%;">
+                    <input name="search" type="text" placeholder="Search..." class="search-int form-control" style="width:100%; background: #fff">
+                    <input class="btn btn-primary" type="submit" value="Submit" style="color: #fff;background-color: #46a267;border-color: #46a267; border-radius:0">
+                  </div>
+                </form>
+              </div>
+            </div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+						</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+
+
+  <div class="container">
+    {% for i in my_vacancy %}
+    <div class="row" style="background: #fff;padding: 20px;margin-bottom: 20px;border-radius: 10px;">
+      <div class="col-md-8">
+        <h1 class="my-4"><a class="article-title" href="{{i.href}}" style="color: #46a267;">{{ i.title }}</a>
+        </h1>
+        <div class="card mb-4">
+          <div class="card-body">
+            <p class="card-text">{{i.text}}</p>
+            <a href="{{i.href}}" class="btn btn-primary" style="color: #fff;background-color: #46a267;border-color: #46a267;">Read More</a>
+          </div>
+          <div class="card-footer text-muted">
+            {{i.date}}
+            <a href="#">by {{i.company}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

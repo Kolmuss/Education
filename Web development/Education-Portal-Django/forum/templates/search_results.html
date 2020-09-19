@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- {% for post in queryset %}
+    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    <br />
+{% endfor %} -->
+
+<div class="container">
+        <div class="row">
+          <!-- Latest Posts -->
+          <main class="posts-listing col-lg-8">
+            <div class="container">
+              <div class="row">
+                <!-- post -->
+                {% for post in queryset %}
+                <div class="post col-xl-12" style="border: 2px solid #46a267;">
+                   <div class="post-details">
+                      <a href="{{ post.get_absolute_url }}">
+                    <div class="post-meta d-flex justify-content-between">
+                      <!-- <div class="date meta-last">20 May | 2016</div> -->
+                    </div>
+                      <h3 class="h4">{{ post.title }}</h3>
+                    <p class="text-muted">{{ post.overview }}</p>
+                    <footer class="post-footer d-flex align-items-center">
+                      <a href="#" class="author d-flex align-items-center flex-wrap">
+                        <div class="avatar"><img src="{{ post.user.image.url }}" alt="..." class="img-fluid"></div>
+                        <div class="title"><span>{{ post.user.username }}</span></div>
+                      </a>
+                      <div class="date"><i class="icon-clock"></i> {{ post.timestamp|timesince }} ago</div>
+                      <div class="comments meta-last"><i class="icon-comment"></i>{{ post.comment_count  }}</div>
+                      {% for cat in post.categories.all %}
+                      <div class="category" style="margin-left: 25px;"><i></i><b>{{ cat }}</b></div>
+                      {% endfor %}
+                    </footer>
+                    </a>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <!-- Pagination -->
+
+            </div>
+          </main>
+          <aside class="col-lg-4" >
+            <!-- Widget [Search Bar Widget]-->
+            <div class="widget search" style="border: 2px solid #46a267;">
+              <header>
+                <h3 class="h6">Search the blog</h3>
+              </header>
+              <form action="{% url 'forum:search' %}" class="search-form">
+                <div class="form-group">
+                  <input type="search"  name="q" placeholder="What are you looking for?">
+                  <button type="submit" class="submit"><i class="icon-search"></i></button>
+                </div>
+              </form>
+            </div>
+            <!-- Widget [Latest Posts Widget]        -->
+            <div class="widget latest-posts" style="border: 2px solid #46a267;">
+              <header>
+                <h3 class="h6">Latest Posts</h3>
+              </header>
+              <div class="widget categories">
+              <div class="blog-posts">
+                {% for post in most_recent %}
+                <a href="{{ post.get_absolute_url }}">
+                <div class="item d-flex align-items-center">
+                    <div class="title"><strong>{{ post.title }}</strong>
+                      <div class="d-flex align-items-center">
+                        <div class="views"><i class="icon-eye"></i>{{ post.view_count }}</div>
+                        <div class="comments"><i class="icon-comment"></i>{{ post.comment_count }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                {% endfor %}
+            </div>
+            </div>
+            </div>
+            <!-- Widget [Categories Widget]-->
+            <div class="widget categories">
+              <header>
+                <h3 class="h6">Categories</h3>
+              </header>
+              {% for cat in category_count %}
+              <div class="item d-flex justify-content-between">
+                <a href="#">{{ cat.categories__title }}</a><span>{{ cat.categories__title__count }}</span></div>
+              </div>
+              {% endfor %}
+          </aside>
+        </div>
+      </div>
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'portal_base.html' %}
+{% load static from staticfiles %}
+
+{% block content%}
+
+<div class="breadcome-area">
+	<div class="container-fluid">
+		<div class="row" style="margin-top:4em">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="breadcome-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div class="breadcome-heading">
+								<form role="search" class="sr-input-func">
+									<input type="text" placeholder="Search..." class="search-int form-control">
+									<a href="#"><i class="fa fa-search"></i></a>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="cards">
+<div class="courses-area">
+<div class="container-fluid">
+	<div class="row">
+		{% for case in cases %}
+		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+			<div class="courses-inner res-mg-b-30">
+				<div class="courses-title">
+					<a href="{% url 'portal:case_page' pk=user.pk case_id=case.pk %}"><img src="{{ case.image.url }}" alt=""  style="width: 300px; height: 200px;"></a>
+					<div class="card">
+						<header><a href="{% url 'portal:case_page' pk=user.pk case_id=case.pk %}" style="color: #000080;"><h2>{{ case.short_name }}</h2></a></header>
+				</div>
+				<div class="course-des">
+					<div class="card-copy">
+					<p><span><i class="fa fa-clock"></i></span> <b>Description: {{ case.title }}
+					</div>
+				</div>
+				<div class="product-buttons">
+          {% if case.is_solved %}
+            <p> Solved </p>
+          {% else %}
+            <p> Relevant </p>
+          {% endif %}
+					<a href="{% url 'portal:case_page' pk=user.pk case_id=case.pk %}" style="color: #000080;"><button type="button" class="button-default cart-btn">Read More</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'portal_base.html' %}
+{% load humanize %}
+{% load static %}
+
+{% block title %}{{ case.caseTitle }}{{block.super}}{% endblock %}
+
+{% block content %}
+
+<div class="breadcome-area">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="breadcome-list single-page-breadcome">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div class="breadcome-heading">
+								<form role="search" class="sr-input-func">
+									<input type="text" placeholder="Search..." class="search-int form-control">
+									<a href="#"><i class="fa fa-search"></i></a>
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<ul class="breadcome-menu">
+								<li><a href="#">Home</a> <span class="bread-slash">/</span>
+								</li>
+								<li><span class="bread-blod">{{ case.short_name }} </span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="blog-details-area mg-b-15" style="margin-bottom:50px;">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="blog-details-inner">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="latest-blog-single blog-single-full-view">
+							<div class="blog-image" style="margin-left:40px;">
+								<a href="#"><img src="{{case.image.url}}" alt="" style="width:1290px; height:600px;" />
+									</a>
+							</div>
+							<div class="blog-details blog-sig-details">
+								<div class="details-blog-dt blog-sig-details-dt courses-info mobile-sm-d-n" style="font-size:20px;text-align:center;">
+									<span><a href="#"><i class="fa fa-user"></i> <b> Organization: </b>{{ case.company }}</a></span>
+
+								</div>
+								<div style="margin:50px;">
+									<h1 style="text-align:center;"><a class="blog-ht" href="#"><h2>{{ course.title }}</h2></a></h1>
+									<div style="margin-left:50px;">
+										<p style="margin-top:40px;font-size:24px;"> {{ case.text }}</p>
+										{% if course.step_set.count > 0 %}
+										<p style="font-size:20px;">Contacts: {{ case.contacts }} {{ case.contacts_URL }}</p>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+{% endblock %}

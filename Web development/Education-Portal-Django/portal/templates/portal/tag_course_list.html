@@ -1,0 +1,103 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block title %}Courses{{block.super}}{% endblock %}
+
+
+
+{% block content%}
+<div class="breadcome-area" style="margin-top:50px;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcome-list single-page-breadcome">
+          <div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+							</div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="breadcome-heading">
+                <form role="search" class="sr-input-func" method="post" style="width:100%">
+                  {% csrf_token %}
+									<div style="display: flex;width:  100%;">
+                    <input name="search" type="text" placeholder="Search..." class="search-int form-control" style="width:100%; background: #fff">
+                    <input class="btn btn-primary" type="submit" value="Submit" style="color: #fff;background-color: #46a267;border-color: #46a267; border-radius:0">
+                  </div>
+                </form>
+              </div>
+            </div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+						</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <ul style="margin-top: 20px; display: flex; justify-content: center;">
+                {% for tag in tags %}
+                <li>
+                  <a href="{% url 'portal:tag' tag_name=tag.slug %}" class="btn btn-primary" style="background: #fff;padding: 10px; border-radius: 30%;margin: 0 6px; color:#46a267; border-color: #46a267">{{tag.name}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+<div class="cards">
+  <div class="courses-area">
+    <div class="container-fluid">
+      <div class="row">
+        {% for course in sub_courses %}
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+          <div class="courses-inner res-mg-b-30" style="height:380px; margin-bottom: 25px">
+            <div class="courses-title">
+              <a href="{% url 'portal:course_details' course_slug=course.slug %}"><img src="{{ course.image.url }}" alt="" style="width: 300px; height: 200px;"></a>
+              <div class="card">
+                <header><a href="{% url 'portal:course_details' course_slug=course.slug %}" style="color: #000080;">
+                    <h2>{{ course.short_name }}</h2>
+                  </a></header>
+              </div>
+              <div class="course-des">
+                <div class="card-copy">
+                  <p><span><i class="fa fa-clock"></i></span> <b>Description: {{ course.title }}
+                </div>
+              </div>
+              <div class="product-buttons">
+                <a href="{% url 'portal:profile' %}" style="color: #000080;"><button type="button" class="button-default cart-btn" style="background: green;">Subscribed</button></a>
+                <a href="{% url 'portal:course_details' course_slug=course.slug %}" style="color: #000080;"><button type="button" class="button-default cart-btn">Read More</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% for course in courses %}
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+          <div class="courses-inner res-mg-b-30" style="height:380px; margin-bottom: 25px">
+            <div class="courses-title">
+              <a href="{% url 'portal:course_details' course_slug=course.slug %}"><img src="{{ course.image.url }}" alt="" style="width: 300px; height: 200px;"></a>
+              <div class="card">
+                <header><a href="{% url 'portal:course_details' course_slug=course.slug %}" style="color: #000080;">
+                    <h2>{{ course.short_name }}</h2>
+                  </a></header>
+              </div>
+              <div class="course-des">
+                <div class="card-copy">
+                  <p><span><i class="fa fa-clock"></i></span> <b>Description: {{ course.title }}
+                </div>
+              </div>
+              <div class="product-buttons">
+                {% if user.profile.level == course.level %}
+                <a href="{% url 'portal:subscribe' course_slug=course.slug %}" style="color: #000080;"><button type="button" class="button-default cart-btn">Subscribe</button></a>
+                {% endif %}
+                <a href="{% url 'portal:course_details' course_slug=course.slug %}" style="color: #000080;"><button type="button" class="button-default cart-btn">Read More</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block title %}Courses{{block.super}}{% endblock %}
+
+{% block content %}
+<div class="breadcome-area" style="margin-top:50px;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcome-list single-page-breadcome" style="padding: 20px 30px;margin: 100px;background: white;">
+          <div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+							</div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <div class="breadcome-heading">
+                <h3 style="text-align: -webkit-center; font-size: 40px">Course's Finale Test</h3>
+              </div>
+            </div>
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
+						</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h3>Status:
+                {% if solved %}
+                SOLVED
+                {%else%}
+                UNSOLVED
+                {%endif%}
+              </h3>
+              <p>Right answers: {{results}} </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <form action="#" method="post">
+                {% csrf_token %}
+                <ul style="margin-top: 20px; justify-content: center;">
+                  {% for question in questions %}
+                  <li style="margin-bottom: 30px;">
+                    <p>{{question.question}}</p>
+                    {% for choice in question.choices.all %}
+                    <input type="radio" name="{{question.pk}}" value="{{choice.title}}"> {{choice.title}} <br>
+                    {% endfor %}
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% if solved %}
+                {% else %}
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Send</button>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+{% endblock %}

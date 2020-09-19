@@ -1,0 +1,22 @@
+<header class="header">
+    <!-- Main Navbar-->
+    <nav class="navbar navbar-expand-lg" style="background: #46a267;">
+        <div class="container" style="text-align: center;">
+        <!-- Navbar Menu -->
+        <div id="navbarcollapse" class="collapse navbar-collapse" >
+            <ul class="navbar-nav ml-auto" >
+            <li class="nav-item"><a href="{% url 'portal:profile' %}" class="nav-link ">Profile</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'portal:course_list' %}" class="nav-link">Courses</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'portal:course_list' %}" class="nav-link">Cases</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'portal:vacancy' %}" class="nav-link ">Vacancy</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'forum:post-list' %}" class="nav-link ">Forum</a>
+            </li>
+             </ul>
+        </div>
+        </div>
+    </nav>
+</header>

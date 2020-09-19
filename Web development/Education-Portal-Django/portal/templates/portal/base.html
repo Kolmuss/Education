@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="no-js" lang="en" style="background: #ececec;">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> {{ namepage }}</title>
+    {% include 'portal/css.html' %}
+</head>
+<body class=mini-navbar style="background: #ececec;">
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="active">
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        <li>
+                            <a href="{% url 'portal:course_list' %}" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
+                        </li>
+                        <li>
+                          <a href="" aria-expanded="false"><span class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">Cases</span></a>
+                        </li>
+                        <li>
+                          <a href="{% url 'portal:vacancy' %}" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Vacancies</span></a>
+                        </li>
+                        <li>
+                          <a href="{% url 'forum:post-list' %}" aria-expanded="false"><span class="educate-icon educate-message icon-wrap"></span> <span class="mini-click-non">Vacancies</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+    <div class="all-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="logo-pro">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-advance-area">
+            <div class="header-top-area" >
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="header-top-wraper">
+                                <div class="row">
+                                    <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                        <div class="menu-switcher-pro">
+                                            <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                              <i class="educate-icon educate-nav"></i>
+												                    </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-11 col-md-12 col-sm-11 col-xs-12">
+                                        <div class="header-right-info">
+                                            <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                                <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span></a>
+                                                    <div role="menu" class="notification-author dropdown-menu animated zoomIn">
+                                                        <div class="notification-single-top">
+                                                            <h1>Notifications</h1>
+                                                        </div>
+                                                        <ul class="notification-menu">
+                                                            <li>
+                                                                <a href="#">
+                                                                    <div class="notification-icon">
+                                                                        <i class="educate-icon educate-checked edu-checked-pro admin-check-pro" aria-hidden="true"></i>
+                                                                    </div>
+                                                                    <div class="notification-content">
+                                                                        <span class="notification-date">16 Sept</span>
+                                                                        <h2>Advanda Cro</h2>
+                                                                        <p>Please done this project as soon possible.</p>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="notification-view">
+                                                            <a href="#">View All Notification</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                  <a href="{% url 'portal:profile' %}" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <img src="{{user.profile.image.url}}" alt="" />
+                                                    <span class="admin-name">{{user.first_name}} {{user.last_name}}</span>
+                                                    <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
+                                                  </a>
+                                                    <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn" style="margin-top: 8px;">
+                                                      <li><a href="{% url 'portal:profile' %}"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
+                                                      </li>
+                                                      <li><a href="{% url 'portal:settings' %}"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
+                                                      </li>
+                                                      <li><a href="{% url 'landing:logout' %}"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block content %}
+        {% endblock content %}
+    </div>
+{% include 'portal/js.html' %}
+</body>
+</html>

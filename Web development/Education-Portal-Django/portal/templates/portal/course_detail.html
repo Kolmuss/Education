@@ -1,0 +1,147 @@
+{% extends 'portal/base.html' %}
+{% load humanize %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}{{ course.short_name }}{{block.super}}{% endblock %}
+
+{% block content %}
+
+<div class="blog-details-area mg-b-15" style="margin-top: 6em">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="blog-details-inner" style="padding: 15px 50px;">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="latest-blog-single blog-single-full-view">
+                <div class="blog-image">
+                  <a href="#"><img src="{{course.banner.url}}" alt="" style="min-height: 400px; max-width:100%; margin: 0 auto;"/></a>
+                  <div class="blog-date">
+										{% if course.created_at.month == 1 %}
+                    <p><span class="blog-day">{{course.created_at.day}}</span> Jan </p>
+										{% endif %}
+										{% if course.created_at.month == 2 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> Feb </p>
+										{% endif %}
+										{% if course.created_at.month == 3 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> Mar </p>
+										{% endif %}
+										{% if course.created_at.month == 4 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> Apr </p>
+										{% endif %}
+										{% if course.created_at.month == 5 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> May </p>
+										{% endif %}
+										{% if course.created_at.month == 6 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> June </p>
+										{% endif %}
+										{% if course.created_at.month == 7 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> July </p>
+										{% endif %}
+										{% if course.created_at.month == 8 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> Aug </p>
+										{% endif %}
+										{% if course.created_at.month == 9 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> Sep </p>
+										{% endif %}
+										{% if course.created_at.month == 10 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> Oct </p>
+										{% endif %}
+										{% if course.created_at.month == 11 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> Nov </p>
+										{% endif %}
+										{% if course.created_at.month == 12 %}
+										<p><span class="blog-day">{{course.created_at.day}}</span> Dec </p>
+										{% endif %}
+                  </div>
+                </div>
+                <div class="blog-details blog-sig-details">
+                  <div class="details-blog-dt blog-sig-details-dt courses-info mobile-sm-d-n">
+                    <span><a href="#"><i class="fa fa-user"></i> <b>Course Name: </b>{{ course.short_name }}</a></span>
+                    <span><a href="#"><i class="fa fa-comments-o" style="font-size: 20px"></i> <b>Professor Name: </b>Alva Adition</a></span>
+                    <span><a href="#"><i class="fa fa-heart" style="font-size: 20px"></i> <b>Likes: </b>{{course.likes.count}}</a></span>
+                    <span><a href="{% url 'portal:subscribe' course_slug=course.slug %}"><i class="fa fa-flag" style="font-size: 20px"></i> <b>Followers: </b>{{course.profile_set.count}}</a></span>
+                  </div>
+                  <h1><a class="blog-ht" href="#">{{ course.title }}</a></h1>
+									<p>{{course.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% if course in user.profile.courses.all %}
+  					{% if course.step_set.count > 0 %}
+  					<div class="row" style="padding: 0 50px">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="comment-head">
+                  <h3>Steps</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p style="font-size:20px;">There are {{ course.step_set.count|apnumber }} step{{ course.step_set.count|pluralize }} in this course: {{ course.step_set.all|join:", " }}</p>
+                <ol style="font-size:24px;margin-left:40px;">
+                  {% for step in course.step_set.all %}
+                  <li>
+                    <h3><a href="{% url 'portal:course_step' course_slug=course.slug step_pk=step.pk %}">{{ step.title }}</a></h3>
+                    <p style="font-size:20px;"><b>Description : </b>{{ step.description }}</p>
+                  </li>
+                  {% endfor %}
+                  <li>
+                    <h3><a href="{% url 'portal:course_test' course_slug=course.slug test_pk=course.test.pk %}">Test</a></h3>
+                  </li>
+                </ol>
+              </div>
+            </div>
+  					{% endif %}
+            <div class="row" style="padding: 0 50px">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="comment-head">
+                  <h3>Comments</h3>
+                </div>
+              </div>
+            </div>
+  					{% for comment in course.course_comment_set.all %}
+            <div class="row" style="padding: 0 50px">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="user-comment" style="margin-bottom: 20px;">
+                  <img src="{{comment.user.profile.image.url}}" alt="" style="width:50px; heiht: auto;"/>
+                  <div class="comment-details">
+                    <h4> {{ comment.user.first_name }} {{ comment.user.last_name }}</h4>
+                    <p>{{comment.text}}</p>
+                    <p style="font-size: 10px">{{comment.dop}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+  					{% endfor %}
+            <div class="row" style="padding: 0 50px">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="lead-head">
+                  <h3>Leave A Comment</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding: 0 50px">
+              <div class="coment-area">
+                <form id="comment" class="comment" method="post">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+  										{% csrf_token %}
+  								    <textarea name="comments_text" rows="8" cols="80" placeholder="Write your comment"></textarea>
+                    </div>
+                    <div class="payment-adress comment-stn">
+                      <button type="submit" class="btn btn-primary waves-effect waves-light">Send</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          {%endif%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
